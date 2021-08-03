@@ -9,26 +9,26 @@ describe('VideoPreviewCard', () => {
   const array = data.items;
   const video = array[1];
   const nonVideo = array[0];
-  test('renders the description of the video correctly', () => {
+  test('renders the title of the video correctly', () => {
     render(
       <VideoPreviewCard
-        key={video.etag}
+        key={video.id.videoId}
         thumbnailURL={video.snippet.thumbnails.high.url}
         title={video.snippet.title}
-        description={video.snippet.description}
-        videoID={video.id.videoId}
+        id={video.id.videoId}
+        kind={video.kind}
       />
     );
-    expect(screen.getByText(video.snippet.description)).toBeInTheDocument();
+    expect(screen.getByText(video.snippet.title)).toBeInTheDocument();
   });
   test('renders the VideoPreviewCard component with button role', () => {
     render(
       <VideoPreviewCard
-        key={video.etag}
+        key={video.id.videoId}
         thumbnailURL={video.snippet.thumbnails.high.url}
         title={video.snippet.title}
-        description={video.snippet.description}
-        videoID={video.id.videoId}
+        id={video.id.videoId}
+        kind={video.kind}
       />
     );
     expect(screen.getByRole('button')).toBeInTheDocument();
@@ -43,10 +43,7 @@ describe('VideoPreviewCard', () => {
         videoID={video.id.videoId}
       />
     );
-    expect(screen.getByText(video.snippet.title).closest('a')).toHaveAttribute(
-      'href',
-      `https://www.youtube.com/watch?v=${video.id.videoId}`
-    );
+    expect(screen.getByText(video.snippet.title).closest('Link')).toBeInTheDocument();
   });
   test('test that not render anything if isnt a video', () => {
     render(
@@ -54,11 +51,11 @@ describe('VideoPreviewCard', () => {
         key={nonVideo.etag}
         thumbnailURL={nonVideo.snippet.thumbnails.high.url}
         title={nonVideo.snippet.title}
-        description={nonVideo.snippet.description}
-        videoID={nonVideo.id.videoId}
+        id={nonVideo.id.videoId}
+        kind={nonVideo.kind}
       />
     );
-    const result = screen.queryByText(nonVideo.snippet.description);
+    const result = screen.queryByText(nonVideo.snippet.title);
     expect(result).not.toBeInTheDocument();
   });
 });

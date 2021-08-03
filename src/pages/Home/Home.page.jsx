@@ -27,7 +27,6 @@ function HomePage() {
           id={item.id}
           thumbnailURL={item.snippet.thumbnails.high.url}
           title={item.snippet.title}
-          description={item.snippet.description}
           kind={item.kind}
         />
       ))}

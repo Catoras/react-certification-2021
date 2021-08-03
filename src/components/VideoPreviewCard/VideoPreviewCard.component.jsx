@@ -10,7 +10,7 @@ function VideoPreviewCard({ id, thumbnailURL, title, kind }) {
   if (kind !== 'youtube#video') return <></>;
   return (
     // eslint-disable-next-line jsx-a11y/anchor-is-valid
-    <Link className="VideoPreviewCard" onClick={handleClick}>
+    <Link className="VideoPreviewCard" onClick={handleClick} role="button">
       <figure className="VideoPreviewCard-ImageContainer">
         <img className="VideoPreviewCard-Image" src={thumbnailURL} alt={title} />
       </figure>
