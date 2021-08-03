@@ -1,27 +1,23 @@
 import React from 'react';
+import { useHistory, Link } from 'react-router';
 
 import './VideoPreviewCard.styles.css';
 
-function VideoPreviewCard({ thumbnailURL, title, description, videoID }) {
-  if (!videoID) return <></>;
+function VideoPreviewCard({ id, thumbnailURL, title, kind }) {
+  const history = useHistory();
+  const handleClick = () => history.push(`/view/${id}`);
+
+  if (kind !== 'youtube#video') return <></>;
   return (
-    <article className="VideoPreviewCard">
-      <a
-        className="VideoPreviewCard-URL"
-        href={`https://www.youtube.com/watch?v=${videoID}`}
-        role="button"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <figure className="VideoPreviewCard-ImageContainer">
-          <img className="VideoPreviewCard-Image" src={thumbnailURL} alt={title} />
-        </figure>
-        <div className="VideoPreviewCard-Details">
-          <h3 className="VideoPreviewCard-Title">{title}</h3>
-          <p className="VideoPreviewCard-Description">{description}</p>
-        </div>
-      </a>
-    </article>
+    // eslint-disable-next-line jsx-a11y/anchor-is-valid
+    <Link className="VideoPreviewCard" onClick={handleClick}>
+      <figure className="VideoPreviewCard-ImageContainer">
+        <img className="VideoPreviewCard-Image" src={thumbnailURL} alt={title} />
+      </figure>
+      <div className="VideoPreviewCard-Details">
+        <h3 className="VideoPreviewCard-Title">{title}</h3>
+      </div>
+    </Link>
   );
 }
 

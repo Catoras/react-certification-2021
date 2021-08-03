@@ -24,6 +24,12 @@ function Header() {
     history.push('/');
   }
 
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter' && event.target.value.length > 0) {
+      history.push(`/search/${event.target.value}`);
+    }
+  };
+
   return (
     <header className="header">
       <div className="home">
@@ -37,7 +43,12 @@ function Header() {
       </div>
       <div className="searchInput">
         <label htmlFor="search">
-          <input name="search" type="text" placeholder="Search" />
+          <input
+            name="search"
+            onKeyDown={handleKeyDown}
+            type="text"
+            placeholder="Search"
+          />
         </label>
       </div>
       {authenticated ? (

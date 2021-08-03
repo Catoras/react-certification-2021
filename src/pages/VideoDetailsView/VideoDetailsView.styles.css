@@ -1,0 +1,27 @@
+.search {
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.VideoDetails_title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.VideoDetails_description {
+  margin-bottom: 10px;
+  text-align: left;
+  padding: 10px;
+}
+.relatedVideosSection {
+  display: flex;
+  text-align: center;
+  flex-wrap: wrap;
+}
