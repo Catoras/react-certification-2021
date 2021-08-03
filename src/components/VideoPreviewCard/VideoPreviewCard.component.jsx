@@ -1,5 +1,6 @@
 import React from 'react';
-import { useHistory, Link } from 'react-router';
+import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 
 import './VideoPreviewCard.styles.css';
 
