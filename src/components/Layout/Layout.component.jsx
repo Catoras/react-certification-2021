@@ -8,8 +8,8 @@ import './Layout.styles.css';
 function Layout({ children }) {
   return (
     <>
-      <Navbar />
       <Header />
+      <Navbar />
       <main className="container">{children}</main>
     </>
   );

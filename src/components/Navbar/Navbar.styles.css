@@ -1,0 +1,50 @@
+.navbar {
+  position: fixed;
+  background-color: var(--bg-primary);
+  transition: width 200ms ease;
+  z-index: 1;
+}
+
+.navbar:hover .navitem-title {
+  display: block;
+}
+.navbar-navlist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.navitem {
+  width: 100%;
+}
+.navitem:last-child {
+  margin-top: auto;
+}
+
+@media only screen and (max-width: 600px) {
+  .navbar{
+    bottom: 0;
+    width: 100vw;
+    height: 5rem;
+  }
+  .navbar-navlist{
+    flex-direction: row;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .navbar{
+    width: 5rem;
+    height: 100vh;
+  }
+  .navbar:hover {
+    width: 16rem;
+  }
+  .navbar:hover .navitem-title {
+    display: inline;
+    transition: opacity 200;
+  }
+}
