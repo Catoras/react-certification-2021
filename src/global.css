@@ -46,7 +46,6 @@ a {
   cursor: auto;
 }
 
-
 body::-webkit-scrollbar {
   width: 0.25rem;
 }
@@ -60,8 +59,8 @@ body::-webkit-scrollbar-thumb {
 }
 
 :root {
-  --header-bg-color: rgba(255, 255, 255, .95);
-  --text-primary: #b6b6b6;
+  --header-bg-color: rgba(255, 255, 255, 0.95);
+  --text-primary: #23232e;
   --text-secondary: #ececec;
   --bg-primary: #23232e;
   --bg-secondary: #141418;

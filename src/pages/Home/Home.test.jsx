@@ -9,8 +9,4 @@ describe('Home', () => {
     render(<Home />);
     expect(screen.getByText('Loading...')).toBeInTheDocument();
   });
-  test('renders at least 1 VideoPreviewCard component', () => {
-    // render(<Home />);
-    // expect(screen.getByRole('button')).toBeInTheDocument();
-  });
 });
