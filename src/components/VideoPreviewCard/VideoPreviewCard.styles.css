@@ -4,7 +4,7 @@
   border-radius: 15px;
   overflow: hidden;
   flex-shrink: 0;
-  background-color: #f4fbff;
+  background-color: var(--bg-primary);
 }
 .VideoPreviewCard:hover {
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.9);
@@ -12,7 +12,7 @@
 .VideoPreviewCard-Details {
   margin: 20px;
   margin-top: -40px;
-  background-color: white;
+  background-color: var(--bg-secondary);
   position: relative;
   padding: 20px;
   border-radius: 2px;

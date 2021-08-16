@@ -1,26 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
-
+import { useStore, useDispatch } from '../../../store/StoreProvider';
 import './ThemeColorSwitch.styles.css';
+import { types } from '../../../store/storeReducer';
 
 function ThemeColorSwitch() {
-  const sunIcon = <FontAwesomeIcon className="navitem-icon" icon={faSun} color="black" />;
-  const moonIcon = (
-    <FontAwesomeIcon className="navitem-icon" icon={faMoon} color="black" />
-  );
-  const [icon, setIcon] = useState(true);
+  const store = useStore();
+  const dispatch = useDispatch();
+  const { isDark } = store;
+
+  const sunIcon = <FontAwesomeIcon className="navitem-icon" icon={faSun} />;
+  const moonIcon = <FontAwesomeIcon className="navitem-icon" icon={faMoon} />;
 
   const handleClick = () => {
-    setIcon(!icon);
+    dispatch({ type: types.TOGGLE_THEME_MODE });
   };
 
   return (
     <li className="navitem" key="ThemeSwitcher">
       <button type="button" onClick={handleClick} className="navitem-link navitem-button">
-        {icon ? sunIcon : moonIcon}
-        <span className="navitem-title">{icon ? 'Light' : 'Dark'}</span>
+        {isDark ? moonIcon : sunIcon}
+        <span className="navitem-title">{isDark ? 'Dark' : 'Light'}</span>
       </button>
     </li>
   );

@@ -10,31 +10,30 @@ import SecretPage from '../../pages/Secret';
 import Private from '../Private';
 import VideoDetailsView from '../../pages/VideoDetailsView';
 import Layout from '../Layout';
+import StoreProvider from '../../store/StoreProvider';
 
 function App() {
   return (
     <BrowserRouter>
-      <AuthProvider>
-        <Layout>
-          <Switch>
-            <Route exact path="/">
-              <HomePage />
-            </Route>
-            <Route exact path="/search/:query" component={Search} />
-            <Route exact path="/view/:videoId" component={VideoDetailsView} />
+      <StoreProvider>
+        <AuthProvider>
+          <Layout>
+            <Switch>
+              <Route exact path="/" component={HomePage} />
+              <Route exact path="/search/:query" component={Search} />
+              <Route exact path="/view/:videoId" component={VideoDetailsView} />
+              <Route exact path="/login" component={LoginPage} />
 
-            <Route exact path="/login">
-              <LoginPage />
-            </Route>
-            <Private exact path="/secret">
-              <SecretPage />
-            </Private>
-            <Route path="*">
-              <NotFound />
-            </Route>
-          </Switch>
-        </Layout>
-      </AuthProvider>
+              <Private exact path="/secret">
+                <SecretPage />
+              </Private>
+              <Route path="*">
+                <NotFound />
+              </Route>
+            </Switch>
+          </Layout>
+        </AuthProvider>
+      </StoreProvider>
     </BrowserRouter>
   );
 }

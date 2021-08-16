@@ -8,11 +8,9 @@ import { useAuth } from '../../providers/Auth';
 import './Header.styles.css';
 
 function Header() {
-  const userIcon = (
-    <FontAwesomeIcon className="loginIcon" icon={faUser} color="black" fixedWidth />
-  );
+  const userIcon = <FontAwesomeIcon className="loginIcon" icon={faUser} fixedWidth />;
   const logOutIcon = (
-    <FontAwesomeIcon className="loginIcon" icon={faSignOutAlt} color="black" fixedWidth />
+    <FontAwesomeIcon className="loginIcon" icon={faSignOutAlt} fixedWidth />
   );
 
   const history = useHistory();

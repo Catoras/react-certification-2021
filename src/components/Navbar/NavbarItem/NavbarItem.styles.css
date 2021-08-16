@@ -20,6 +20,7 @@
   min-width: 2rem;
   margin: 0 1.5rem;
   height: auto;
+  color: inherit;
 }
 
 @media only screen and (max-width: 600px) {
