@@ -6,7 +6,6 @@ import HomePage from '../../pages/Home';
 import Search from '../../pages/Search';
 import LoginPage from '../../pages/Login';
 import NotFound from '../../pages/NotFound';
-import SecretPage from '../../pages/Secret';
 import Private from '../Private';
 import VideoDetailsView from '../../pages/VideoDetailsView';
 import Layout from '../Layout';
@@ -23,10 +22,10 @@ function App() {
               <Route exact path="/search/:query" component={Search} />
               <Route exact path="/view/:videoId" component={VideoDetailsView} />
               <Route exact path="/login" component={LoginPage} />
-
-              <Private exact path="/secret">
-                <SecretPage />
+              <Private>
+                <Route exact path="/favorites" />
               </Private>
+
               <Route path="*">
                 <NotFound />
               </Route>

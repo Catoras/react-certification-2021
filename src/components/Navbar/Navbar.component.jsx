@@ -5,11 +5,11 @@ import ThemeColorSwitch from './ThemeColorSwitch/ThemeColorSwitch.component';
 import './Navbar.styles.css';
 
 function Navbar() {
-  const navListItems = [{ title: 'Favorites', href: 'Favorites', faIcon: 'Star' }];
+  const navListItems = [{ title: 'Favorites', href: 'favorites', faIcon: 'Star' }];
 
   const navbarItemElements = navListItems.map((element) => (
     <li className="navitem" key={element.title}>
-      <NavbarItem title={element.title} href={element.ref} faIcon={element.faIcon} />
+      <NavbarItem title={element.title} href={element.href} faIcon={element.faIcon} />
     </li>
   ));
 

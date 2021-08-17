@@ -1,18 +1,20 @@
 import React from 'react';
 import { useHistory } from 'react-router';
-
+import { Redirect } from 'react-router-dom';
 import { useAuth } from '../../providers/Auth';
 import './Login.styles.css';
 
 function LoginPage() {
-  const { login } = useAuth();
+  const { login, authenticated } = useAuth();
   const history = useHistory();
 
   function authenticate(event) {
     event.preventDefault();
     login();
-    history.push('/secret');
+    history.push('/');
   }
+
+  if (authenticated) return <Redirect to="/" />;
 
   return (
     <section className="login">
