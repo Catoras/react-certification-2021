@@ -1,7 +1,38 @@
 .container {
-  width: 100vw;
+  /*careful maybe need width*/
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-left: 5rem;
+}
+@media only screen and (max-width: 600px) {
+  .container{
+    margin: 0;
+  }
+}
+.dark-theme {
+  --header-bg-color: #323232;
+  
+  --text-primary: #fff;
+  --text-secondary: #909090;
+  
+  --bg-primary: #212121;
+  --bg-primary-hover: #303030;
+  --bg-secondary: #181818;
+  
+  
+}
+.light-theme {
+  --header-bg-color: #FFF;
+  
+  --text-primary: #030303;
+  --text-secondary: #606060;
+  
+  --bg-primary: #FFF;
+  --bg-primary-hover: #ECECEC;
+  --bg-secondary: #FFF;
+}
+.content-container {
+  color: var(--text-primary);
 }

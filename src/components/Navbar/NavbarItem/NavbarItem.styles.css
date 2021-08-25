@@ -1,0 +1,30 @@
+.navitem-link {
+  display: flex;
+  align-items: center;
+  height: 5rem;
+  color: var(--text-primary);
+  filter: grayscale(100%) opacity(0.7);
+  cursor: pointer;
+}
+.navitem-link:hover {
+  filter: grayscale(0%) opacity(1);
+  background: var(--bg-secondary);
+  border: 1px solid black;
+}
+.navitem-title{
+  display: none;
+  margin-left: 1rem;
+  font-weight: 700;
+}
+.navitem-icon{
+  min-width: 2rem;
+  margin: 0 1.5rem;
+  height: auto;
+  color: inherit;
+}
+
+@media only screen and (max-width: 600px) {
+  .navitem-link{
+    justify-content: center;
+  }
+}
