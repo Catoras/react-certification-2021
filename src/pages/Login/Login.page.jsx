@@ -10,8 +10,11 @@ function LoginPage() {
 
   function authenticate(event) {
     event.preventDefault();
-    login();
-    history.push('/');
+    const { username, password } = event.target.elements;
+    login(username.value, password.value);
+    if (authenticated) {
+      history.push('/');
+    }
   }
 
   if (authenticated) return <Redirect to="/" />;

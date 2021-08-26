@@ -25,10 +25,7 @@ function App() {
               <Private>
                 <Route exact path="/favorites" />
               </Private>
-
-              <Route path="*">
-                <NotFound />
-              </Route>
+              <Route path="*" component={NotFound} />
             </Switch>
           </Layout>
         </AuthProvider>

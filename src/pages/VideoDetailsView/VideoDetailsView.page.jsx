@@ -2,6 +2,7 @@ import React from 'react';
 import useYoutubeAPI from '../../utils/Hooks/useYoutubeAPI';
 import useDebounce from '../../utils/Hooks/useDebounce';
 import VideoPreviewCard from '../../components/VideoPreviewCard';
+import FavoriteButton from '../../components/FavoriteButton';
 
 import './VideoDetailsView.styles.css';
 
@@ -30,6 +31,7 @@ function VideoDetailsView({ match }) {
           width="100%"
           height="500px"
         />
+        <FavoriteButton videoID={match.params.videoId} className="favButtonBig" />
         <div className="VideoDetails">
           <p className="VideoDetails_title">{mainVideo.data.items[0].snippet.title}</p>
           <p className="VideoDetails_description">

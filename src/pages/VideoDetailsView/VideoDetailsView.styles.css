@@ -25,3 +25,8 @@
   text-align: center;
   flex-wrap: wrap;
 }
+
+.favButtonBig {
+  height: 50px;
+  width: 50px;
+}
