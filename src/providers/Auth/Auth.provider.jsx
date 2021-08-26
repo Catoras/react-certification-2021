@@ -29,12 +29,10 @@ function AuthProvider({ children }) {
     const promise = loginAPI(username, password);
     promise
       .then(() => {
-        console.log('login success');
         storage.set(AUTH_STORAGE_KEY, true);
         setAuthenticated(true);
       })
       .catch(() => {
-        console.log('login failed');
         storage.set(AUTH_STORAGE_KEY, false);
         setAuthenticated(false);
       });

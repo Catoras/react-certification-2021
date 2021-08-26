@@ -9,7 +9,7 @@ import './FavoriteVideosView.styles.css';
 
 function FavoriteVideosView() {
   const store = useStore();
-  const favVideos = store.favorites.slice(0, 20);
+  const favVideos = store.favorites.slice(0, 10);
   const query = favVideos.join(',');
   const { data, loading, error, fetchData } = useYoutubeAPI('getById', query);
   useDebounce(
@@ -20,7 +20,7 @@ function FavoriteVideosView() {
     1
   );
 
-  if (favVideos.size === 0) return <div>You don´t have favorite videos...</div>;
+  if (favVideos.length === 0) return <div>You don´t have favorite videos...</div>;
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error!</div>;
 

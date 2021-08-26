@@ -12,7 +12,7 @@ function VideoDetailsView({ match, fromFavorite }) {
   const store = useStore();
   const favVideos = store.favorites
     .filter((videoId) => videoId !== match.params.videoId)
-    .slice(0, 20);
+    .slice(0, 10);
   const query = fromFavorite ? favVideos.join(',') : match.params.videoId;
   const relatedVideos = useYoutubeAPI(
     fromFavorite ? 'getById' : 'getRelatedVideos',

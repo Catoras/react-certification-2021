@@ -16,7 +16,7 @@ const useYoutubeAPI = (typeOfQuery = 'mostPopular', query = '') => {
             part: 'snippet',
             chart: 'mostPopular',
             regionCode: 'MX',
-            maxResults: 2,
+            maxResults: 10,
             pageToken: '',
           },
         });
@@ -25,7 +25,7 @@ const useYoutubeAPI = (typeOfQuery = 'mostPopular', query = '') => {
           params: {
             type: 'video',
             part: 'snippet',
-            maxResults: 2,
+            maxResults: 10,
             q: query,
           },
         });
@@ -41,7 +41,7 @@ const useYoutubeAPI = (typeOfQuery = 'mostPopular', query = '') => {
           params: {
             part: 'snippet',
             relatedToVideoId: query,
-            maxResults: 2,
+            maxResults: 10,
             type: 'video',
           },
         });
