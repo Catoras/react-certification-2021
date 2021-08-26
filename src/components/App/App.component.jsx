@@ -10,6 +10,7 @@ import Private from '../Private';
 import VideoDetailsView from '../../pages/VideoDetailsView';
 import Layout from '../Layout';
 import StoreProvider from '../../store/StoreProvider';
+import FavoriteVideosView from '../../pages/FavoriteVideosView';
 
 function App() {
   return (
@@ -23,7 +24,12 @@ function App() {
               <Route exact path="/view/:videoId" component={VideoDetailsView} />
               <Route exact path="/login" component={LoginPage} />
               <Private>
-                <Route exact path="/favorites" />
+                <Route exact path="/favorites" component={FavoriteVideosView} />
+                <Route
+                  exact
+                  path="/favorite/:videoId"
+                  render={(props) => <VideoDetailsView {...props} fromFavorite />}
+                />
               </Private>
               <Route path="*" component={NotFound} />
             </Switch>

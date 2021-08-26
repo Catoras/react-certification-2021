@@ -9,8 +9,6 @@ const types = {
   TOGGLE_THEME_MODE: 'TOGGLE_THEME_MODE',
   ADD_TO_FAVORITES: 'ADD_TO_FAVORITES',
   DELETE_FROM_FAVORITES: 'DELETE_FROM_FAVORITES',
-  LOGIN: 'LOGIN',
-  LOGOUT: 'LOGOUT',
 };
 
 const storeReducer = (state, action) => {

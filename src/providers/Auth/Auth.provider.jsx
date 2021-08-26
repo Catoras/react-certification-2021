@@ -26,10 +26,6 @@ function AuthProvider({ children }) {
   }, []);
 
   const login = useCallback((username, password) => {
-    if (username === 'admin' && password === 'admin') {
-      storage.set(AUTH_STORAGE_KEY, true);
-      setAuthenticated(true);
-    }
     const promise = loginAPI(username, password);
     promise
       .then(() => {

@@ -3,12 +3,22 @@ import useYoutubeAPI from '../../utils/Hooks/useYoutubeAPI';
 import useDebounce from '../../utils/Hooks/useDebounce';
 import VideoPreviewCard from '../../components/VideoPreviewCard';
 import FavoriteButton from '../../components/FavoriteButton';
+import { useStore } from '../../store/StoreProvider';
 
 import './VideoDetailsView.styles.css';
 
-function VideoDetailsView({ match }) {
+function VideoDetailsView({ match, fromFavorite }) {
   const mainVideo = useYoutubeAPI('getById', match.params.videoId);
-  const relatedVideos = useYoutubeAPI('getRelatedVideos', match.params.videoId);
+  const store = useStore();
+  const favVideos = store.favorites
+    .filter((videoId) => videoId !== match.params.videoId)
+    .slice(0, 20);
+  const query = fromFavorite ? favVideos.join(',') : match.params.videoId;
+  const relatedVideos = useYoutubeAPI(
+    fromFavorite ? 'getById' : 'getRelatedVideos',
+    query
+  );
+
   useDebounce(
     () => {
       mainVideo.fetchData();
@@ -39,7 +49,7 @@ function VideoDetailsView({ match }) {
           </p>
         </div>
       </div>
-      <h2>Related Videos</h2>
+      <h2>{fromFavorite ? 'Favorite Videos' : 'Related Videos'}</h2>
       <div className="relatedVideosSection">
         {relatedVideos.loading
           ? 'Loading...'
@@ -47,12 +57,13 @@ function VideoDetailsView({ match }) {
               .filter((item) => item.snippet !== undefined)
               .map((item) => (
                 <VideoPreviewCard
-                  key={item.id.videoId}
-                  id={item.id.videoId}
+                  key={fromFavorite ? item.id : item.id.videoId}
+                  id={fromFavorite ? item.id : item.id.videoId}
                   thumbnailURL={item.snippet.thumbnails.medium.url}
                   title={item.snippet.title}
                   description={item.snippet.description}
-                  kind={item.id.kind}
+                  kind={fromFavorite ? item.kind : item.id.kind}
+                  isFavorite={fromFavorite}
                 />
               ))}
       </div>

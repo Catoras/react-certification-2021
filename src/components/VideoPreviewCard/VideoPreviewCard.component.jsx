@@ -5,12 +5,12 @@ import FavoriteButton from '../FavoriteButton';
 
 import './VideoPreviewCard.styles.css';
 
-function VideoPreviewCard({ id, thumbnailURL, title, kind }) {
+function VideoPreviewCard({ id, thumbnailURL, title, kind, isFavorite }) {
   if (kind !== 'youtube#video') return <></>;
   return (
     <div className="VideoPreviewCard">
       <FavoriteButton videoID={id} className="favButton" />
-      <Link to={`/view/${id}`}>
+      <Link to={isFavorite ? `/favorite/${id}` : `/view/${id}`}>
         <figure className="VideoPreviewCard-ImageContainer">
           <img className="VideoPreviewCard-Image" src={thumbnailURL} alt={title} />
         </figure>
