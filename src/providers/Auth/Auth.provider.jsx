@@ -3,6 +3,8 @@ import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { AUTH_STORAGE_KEY } from '../../utils/constants';
 import { storage } from '../../utils/storage';
 
+import loginAPI from '../../utils/login.api';
+
 const AuthContext = React.createContext(null);
 
 function useAuth() {
@@ -23,9 +25,18 @@ function AuthProvider({ children }) {
     setAuthenticated(isAuthenticated);
   }, []);
 
-  const login = useCallback(() => {
-    setAuthenticated(true);
-    storage.set(AUTH_STORAGE_KEY, true);
+  const login = useCallback((username, password) => {
+    const promise = loginAPI(username, password);
+    promise
+      .then(() => {
+        storage.set(AUTH_STORAGE_KEY, true);
+        setAuthenticated(true);
+      })
+      .catch(() => {
+        storage.set(AUTH_STORAGE_KEY, false);
+        setAuthenticated(false);
+      });
+    return promise;
   }, []);
 
   const logout = useCallback(() => {
